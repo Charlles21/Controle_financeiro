@@ -2,13 +2,28 @@ package br.com.controle_financeiro.controle_financeiro.Dtos;
 
 import java.time.LocalDate;
 
-public class RevenueDto {
+public class RevenueDetalDto {
     
+    private Long id;
     private double value;   
     private String name;  
     private String description;
     private LocalDate date;     
     
+    
+    
+    public RevenueDetalDto(Long id, double value, String name, String description, LocalDate date) {
+        this.id = id;
+        this.value = value;
+        this.name = name;
+        this.description = description;
+        this.date = date;
+    }
+    
+    public RevenueDetalDto() {
+    }
+
+
     public double getValue() {
         return value;
     }
@@ -34,8 +49,10 @@ public class RevenueDto {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    
-
-    
-
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
