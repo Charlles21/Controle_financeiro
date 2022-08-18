@@ -1,9 +1,13 @@
 package br.com.controle_financeiro.controle_financeiro.Models;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Costs {
@@ -11,9 +15,13 @@ public class Costs {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //falta a validaçao    
     private double value;
+    @NotNull(message = "value blank or void") @NotBlank(message = "value blank or void")  
     private String name;
+    @NotNull(message = "value blank or void") @NotBlank(message = "value blank or void")  
     private String description;
+    private LocalDate date;
     
     public Long getId() {
         return id;
@@ -39,6 +47,14 @@ public class Costs {
     public void setDescription(String description) {
         this.description = description;
     }
+    public LocalDate getDate() {
+        return date;
+    }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
+
+    
     
 }

@@ -23,7 +23,7 @@ public class Revenue {
     private String name;
     @NotNull(message = "value blank or void") @NotBlank(message = "value blank or void")
     private String description; 
-   private LocalDate date;
+    private LocalDate date;
     
 
     public Long getId() {
