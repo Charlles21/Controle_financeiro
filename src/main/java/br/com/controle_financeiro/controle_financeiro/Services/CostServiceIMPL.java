@@ -1,6 +1,7 @@
 package br.com.controle_financeiro.controle_financeiro.Services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -33,6 +34,20 @@ public class CostServiceIMPL implements CostService{
     public List<CostDto> listAllCosts() {
         List<Costs> listOfCosts = repositoryCost.findAll();
         return listOfCosts.stream().map(costs -> mapper.map(costs, CostDto.class)).collect(Collectors.toList());
+    }
+
+
+    @Override
+    public Optional<CostDto> findCostById(Long id) {
+       Optional<Costs> cost = repositoryCost.findById(id);
+
+       if(cost.isPresent()){
+        CostDto  costDto = mapper.map(cost.get(), CostDto.class);
+
+        return Optional.of(costDto);
+       }
+
+        return null;
     }
 
 
