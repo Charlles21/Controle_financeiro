@@ -1,5 +1,8 @@
 package br.com.controle_financeiro.controle_financeiro.Services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,13 @@ public class CostServiceIMPL implements CostService{
       Costs cost = mapper.map(costDto, Costs.class);
       repositoryCost.save(cost);     
         return costDto;
+    }
+
+
+    @Override
+    public List<CostDto> listAllCosts() {
+        List<Costs> listOfCosts = repositoryCost.findAll();
+        return listOfCosts.stream().map(costs -> mapper.map(costs, CostDto.class)).collect(Collectors.toList());
     }
 
 
