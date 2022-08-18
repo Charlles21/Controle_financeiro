@@ -10,4 +10,5 @@ public interface CostService {
     List<CostDto> listAllCosts();
     Optional<CostDto> findCostById(Long id);
     CostDto upDateCostById(Long id, CostDto costDto);
+    void deleteCostById(Long id);
 }

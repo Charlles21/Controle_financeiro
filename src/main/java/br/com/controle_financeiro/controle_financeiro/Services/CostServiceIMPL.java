@@ -55,8 +55,7 @@ public class CostServiceIMPL implements CostService{
     public CostDto upDateCostById(Long id, CostDto costDto) {
         Optional<Costs> cost = repositoryCost.findById(id);
 
-        if(cost.isPresent()){
-           
+        if(cost.isPresent()){           
             Costs costUpdated = mapper.map(costDto, Costs.class);
             costUpdated.setId(id);
             repositoryCost.save(costUpdated);
@@ -65,6 +64,12 @@ public class CostServiceIMPL implements CostService{
     
             return null;
       
+    }
+
+
+    @Override
+    public void deleteCostById(Long id) {
+        repositoryCost.deleteById(id);
     }
 
 
