@@ -9,4 +9,5 @@ public interface CostService {
     CostDto saveCost(CostDto costDto);
     List<CostDto> listAllCosts();
     Optional<CostDto> findCostById(Long id);
+    CostDto upDateCostById(Long id, CostDto costDto);
 }

@@ -51,5 +51,22 @@ public class CostServiceIMPL implements CostService{
     }
 
 
+    @Override
+    public CostDto upDateCostById(Long id, CostDto costDto) {
+        Optional<Costs> cost = repositoryCost.findById(id);
+
+        if(cost.isPresent()){
+           
+            Costs costUpdated = mapper.map(costDto, Costs.class);
+            costUpdated.setId(id);
+            repositoryCost.save(costUpdated);
+            return mapper.map(costUpdated, CostDto.class);
+           }
+    
+            return null;
+      
+    }
+
+
     
 }
